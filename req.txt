@@ -1,0 +1,16 @@
+django
+pillow
+django-translation-manager
+django-ckeditor
+django-modeltranslation
+django-mptt
+whitenoise
+python-docx
+djangorestframework
+django-cors-headers
+
+django-jazzmin
+
+python-dotenv~=1.0.0
+requests
+channels
