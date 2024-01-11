@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # tm
     'users',
     'sklad',
+    'rooms',
 ]
 
 PASSWORD_HASHERS = [

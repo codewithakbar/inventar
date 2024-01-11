@@ -10,16 +10,20 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=True)
     username = models.CharField(_('username'), max_length=30, unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
-    date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
+    email = models.EmailField(max_length=255, unique=True, db_index=True)
+    profile_image = models.ImageField(upload_to='profile/%Y/%m/%d', null=True, blank=True)
+    full_name = models.CharField(max_length=233, null=True, blank=True)
+    last_name = models.CharField(max_length=222, null=True, blank=True)
+    first_name = models.CharField(max_length=222, null=True, blank=True)
+    kasbi = models.CharField(max_length=233, null=True, blank=True)
     is_active = models.BooleanField(_('active'), default=True)
-    is_staff = models.BooleanField(_('staff'), default=True)
-    avatar = models.ImageField(upload_to='avatars/%Y/%m/%d/', null=True, blank=True)
-    bg_avatar = models.ImageField(upload_to='avatars/bg/%Y/%m/%d/', null=True, blank=True)
+    is_staff = models.BooleanField(_('staff'), default=False)
+    oddiy_admin = models.BooleanField(default=False)
+    objects = UserManager()
 
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
